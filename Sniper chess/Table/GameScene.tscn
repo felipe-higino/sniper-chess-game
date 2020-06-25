@@ -25,5 +25,4 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 CellPrefab = ExtResource( 1 )
-
-[node name="Sniper" parent="." instance=ExtResource( 3 )]
+SniperPrefab = ExtResource( 3 )

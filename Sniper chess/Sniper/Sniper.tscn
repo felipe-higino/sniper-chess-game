@@ -15,7 +15,7 @@ margin_bottom = -0.160004
 rect_min_size = Vector2( 50, 50 )
 rect_pivot_offset = Vector2( 25, 25 )
 mouse_filter = 2
-color = Color( 0.160784, 0.521569, 0.945098, 0.333333 )
+color = Color( 0.168627, 0.945098, 0.160784, 0.333333 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
