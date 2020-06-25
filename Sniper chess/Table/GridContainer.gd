@@ -7,6 +7,7 @@ var pressed_couple:PressedCouple = PressedCouple.new()
 
 func _ready():
 	_generate_table()
+	pressed_couple.connect("require_movement", self, "_make_movement")
 
 func _generate_table():
 	for i in 11:
@@ -43,3 +44,8 @@ func _grid_pressed(buttonRef, is_pressed):
 		pressed_couple.append_to_couple(buttonRef)
 	else:
 		pressed_couple.remove_from_couple(buttonRef)
+
+func _make_movement(first_cell, second_cell):
+	var first_cell_child = first_cell.get_child(0)
+	var second_cell_child= second_cell.get_child(0)
+	
