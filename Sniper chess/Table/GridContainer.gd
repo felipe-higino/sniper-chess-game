@@ -38,8 +38,6 @@ func _generate_table():
 					sniper.face_left()
 
 func _grid_pressed(buttonRef, is_pressed):
-	var selected_sniper = buttonRef.get_child(0)
-	print(buttonRef.grid_position)
 	if(is_pressed):
 		pressed_couple.append_to_couple(buttonRef)
 	else:
@@ -48,4 +46,13 @@ func _grid_pressed(buttonRef, is_pressed):
 func _make_movement(first_cell, second_cell):
 	var first_cell_child = first_cell.get_child(0)
 	var second_cell_child= second_cell.get_child(0)
-	
+	#fail rules
+	if(!first_cell_child):#first cell not occupied
+		print("Ilegal move, first selected is not a sniper")
+		return
+	if(second_cell_child):#second cell occupied
+		print("Ilegal move, second selected is occupied")
+		return
+	#succeded movement
+	first_cell.remove_child(first_cell_child)
+	second_cell.add_child(first_cell_child)
