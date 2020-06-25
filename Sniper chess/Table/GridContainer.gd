@@ -6,6 +6,9 @@ export (PackedScene) var SniperPrefab = null
 var pressed_couple:PressedCouple = PressedCouple.new()
 
 func _ready():
+	_generate_table()
+
+func _generate_table():
 	for i in 11:
 		for j in 11:
 			#generate buttons
