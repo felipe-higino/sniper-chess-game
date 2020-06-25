@@ -8,7 +8,10 @@ signal require_movement(first_cell, second_cell)
 
 func append_to_couple(cell:GridCell):
 	if(!first_cell):
-		first_cell = cell
+		if(cell.get_child(0)):
+			first_cell = cell
+		else:
+			cell.pressed=false
 	elif(!second_cell):
 		second_cell = cell
 	if(first_cell && second_cell):

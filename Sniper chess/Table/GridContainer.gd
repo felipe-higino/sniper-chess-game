@@ -43,7 +43,7 @@ func _grid_pressed(buttonRef, is_pressed):
 	else:
 		pressed_couple.remove_from_couple(buttonRef)
 
-func _make_movement(first_cell, second_cell):
+func _make_movement(first_cell:GridCell, second_cell:GridCell):
 	var first_cell_child = first_cell.get_child(0)
 	var second_cell_child= second_cell.get_child(0)
 	#fail rules
@@ -53,6 +53,16 @@ func _make_movement(first_cell, second_cell):
 	if(second_cell_child):#second cell occupied
 		print("Ilegal move, second selected is occupied")
 		return
-	#succeded movement
+	var x_variation = second_cell.grid_position.x - first_cell.grid_position.x
+	var y_variation = second_cell.grid_position.y - first_cell.grid_position.y
+	#legal: (1,0) (0,1) / ilegal: (2,1), (1,1), (4,5), (0,9)...
+	var is_10 = (abs(x_variation)==1) and (abs(y_variation)==0)
+	var is_01 = (abs(x_variation)==0) and (abs(y_variation)==1)
+	if( not(is_10 or is_01) ):
+		print("Ilegal move, moved more than one grid")
+		return
+	#succeeded movement
 	first_cell.remove_child(first_cell_child)
 	second_cell.add_child(first_cell_child)
+	#changing rotation
+	
