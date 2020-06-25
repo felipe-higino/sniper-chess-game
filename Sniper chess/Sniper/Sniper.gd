@@ -1,4 +1,5 @@
 extends ColorRect
+class_name Sniper
 
 export (Color) var RED = null
 export (Color) var BLU = null
