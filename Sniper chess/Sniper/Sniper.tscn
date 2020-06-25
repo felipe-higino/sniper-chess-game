@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://_Resources/Fonts/Roboto-Bold.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://Sniper/Sniper.gd" type="Script" id=2]
+
+[sub_resource type="DynamicFont" id=1]
+size = 43
+use_mipmaps = true
+use_filter = true
+font_data = ExtResource( 1 )
+
+[node name="Sniper" type="ColorRect"]
+margin_right = -0.160004
+margin_bottom = -0.160004
+rect_min_size = Vector2( 50, 50 )
+rect_pivot_offset = Vector2( 25, 25 )
+mouse_filter = 2
+color = Color( 0.976471, 0.172549, 0.172549, 0.333333 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_right = 50.0
+margin_bottom = 51.0
+custom_fonts/font = SubResource( 1 )
+text = "^"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
