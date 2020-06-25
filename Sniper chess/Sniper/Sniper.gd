@@ -9,11 +9,9 @@ const ANGLES = {
 	"RIGHT": 90.0,
 	"LEFT": -90.0
 }
-var angle:String = "TOP" setget _set_sniper_angle
 
 func _set_sniper_angle(value):
 	set_rotation_degrees(value)
-	angle = value
 
 #---------------------------------- API
 func face_top():
