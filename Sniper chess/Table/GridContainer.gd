@@ -13,10 +13,13 @@ func _generate_table():
 	for i in 11:
 		for j in 11:
 			#generate buttons
-			var new_button = CellPrefab.instance()
+			var new_button:GridCell = CellPrefab.instance()
 			new_button.grid_position = Vector2(i,j);
 			new_button.connect("cell_clicked", self, "_grid_pressed")
 			add_child(new_button)
+			#central in table
+			if(i==5 and j==5):
+				new_button.self_modulate = Color("#20ff00")
 			#generate snipers
 			#-- red ones
 			if( (i==0) || (i>0 && i<10 && j==10) ):
@@ -73,4 +76,4 @@ func _make_movement(first_cell:GridCell, second_cell:GridCell):
 		first_cell_child.face_bot()
 	elif(y_variation<0):
 		first_cell_child.face_top()
-	print("variation: (%d,%d)" %[x_variation,y_variation])
+	#vprint("variation: (%d,%d)" %[x_variation,y_variation])
