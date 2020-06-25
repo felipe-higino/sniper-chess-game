@@ -44,7 +44,7 @@ func _grid_pressed(buttonRef, is_pressed):
 		pressed_couple.remove_from_couple(buttonRef)
 
 func _make_movement(first_cell:GridCell, second_cell:GridCell):
-	var first_cell_child = first_cell.get_child(0)
+	var first_cell_child:Sniper = first_cell.get_child(0)
 	var second_cell_child= second_cell.get_child(0)
 	#fail rules
 	if(!first_cell_child):#first cell not occupied
@@ -53,8 +53,8 @@ func _make_movement(first_cell:GridCell, second_cell:GridCell):
 	if(second_cell_child):#second cell occupied
 		print("Ilegal move, second selected is occupied")
 		return
-	var x_variation = second_cell.grid_position.x - first_cell.grid_position.x
-	var y_variation = second_cell.grid_position.y - first_cell.grid_position.y
+	var y_variation = second_cell.grid_position.x - first_cell.grid_position.x
+	var x_variation = second_cell.grid_position.y - first_cell.grid_position.y
 	#legal: (1,0) (0,1) / ilegal: (2,1), (1,1), (4,5), (0,9)...
 	var is_10 = (abs(x_variation)==1) and (abs(y_variation)==0)
 	var is_01 = (abs(x_variation)==0) and (abs(y_variation)==1)
@@ -65,4 +65,12 @@ func _make_movement(first_cell:GridCell, second_cell:GridCell):
 	first_cell.remove_child(first_cell_child)
 	second_cell.add_child(first_cell_child)
 	#changing rotation
-	
+	if(x_variation>0):
+		first_cell_child.face_right()
+	elif(x_variation<0):
+		first_cell_child.face_left()
+	elif(y_variation>0):
+		first_cell_child.face_bot()
+	elif(y_variation<0):
+		first_cell_child.face_top()
+	print("variation: (%d,%d)" %[x_variation,y_variation])
